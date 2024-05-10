@@ -1,2 +1,3 @@
 *lastrun.py
-data
+data/*.psydat
+data/*.log
