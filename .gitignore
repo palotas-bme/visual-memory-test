@@ -1,3 +1,6 @@
 *lastrun.py
 data/*.psydat
 data/*.log
+.Rproj.user
+.RData
+.Rhistory
