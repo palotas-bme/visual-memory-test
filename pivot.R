@@ -10,6 +10,9 @@ headers = c("ID",
             "Reaction time [n=5]",
             "Reaction time [n=9]",
             "Reaction time [n=13]",
+            "Accuracy [n=5]",
+            "Accuracy [n=9]",
+            "Accuracy [n=13]",
             "Total correct"
             )
 
@@ -23,7 +26,10 @@ df_wide = df_long %>%
   group_by(id, pic_num) %>% 
   summarise(correct=sum(is_correct), mean_time=mean(mouse.time), age=mean(age)) %>% 
   pivot_wider(names_from = pic_num, values_from = c(correct, mean_time)) %>% 
-  mutate(sum_correct=sum(across(starts_with("correct")))) 
+  mutate(accuracy5=(correct_5/5)*100 ,
+         accuracy9=(correct_9/5)*100 ,
+         accuracy13=(correct_13/5)*100 ,
+         sum_correct=sum(across(starts_with("correct")))) 
 
 names(df_wide) = headers
 
